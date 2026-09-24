@@ -23,12 +23,39 @@ export type Course = {
 
 export type Playlist = {
   id: string;
+  courseId: string;
   title: string;
+  description: string;
+  thumbnail: string;
   videoCount: number;
   topicCount: number;
   progress: number;
   contentDuration: string;
+  completedDuration: string;
+  remainingDuration: string;
   studyTime: string;
+  completedTopics: number;
+  completedVideos: number;
+  videos: Video[];
+};
+
+export type VideoStatus = "Not Started" | "In Progress" | "Completed";
+
+export type Video = {
+  id: string;
+  playlistId: string;
+  position: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  duration: string;
+  topicCount: number;
+  completedTopicCount: number;
+  completedDuration: string;
+  studyTime: string;
+  progress: number;
+  status: VideoStatus;
+  recentlyStudied: boolean;
 };
 
 export type StudyDay = {
@@ -80,8 +107,47 @@ export const courses: Course[] = [
     name: "DSA",
     description: "Data Structures and Algorithms",
     playlists: [
-      { id: "striver-a2z", title: "Striver A2Z DSA Course", videoCount: 48, topicCount: 205, progress: 62, contentDuration: "68h 01m", studyTime: "18h 32m" },
-      { id: "data-structures-fundamentals", title: "Data Structures Fundamentals", videoCount: 24, topicCount: 96, progress: 34, contentDuration: "31h 40m", studyTime: "7h 18m" },
+      {
+        id: "striver-a2z",
+        courseId: "dsa",
+        title: "Striver A2Z DSA Course",
+        description: "Complete Data Structures and Algorithms learning path.",
+        thumbnail: "emerald",
+        videoCount: 48,
+        topicCount: 205,
+        progress: 62,
+        contentDuration: "67h 01m",
+        completedDuration: "42h 18m",
+        remainingDuration: "24h 43m",
+        studyTime: "18h 32m",
+        completedTopics: 127,
+        completedVideos: 31,
+        videos: [
+          { id: "introduction-to-arrays", playlistId: "striver-a2z", position: 1, title: "Introduction to Arrays", description: "Array fundamentals and core operations.", thumbnail: "emerald", duration: "42:15", topicCount: 8, completedTopicCount: 8, completedDuration: "42m", studyTime: "1h 12m", progress: 100, status: "Completed", recentlyStudied: false },
+          { id: "array-problems", playlistId: "striver-a2z", position: 2, title: "Array Problems", description: "Build confidence with common array patterns.", thumbnail: "sky", duration: "58:32", topicCount: 10, completedTopicCount: 6, completedDuration: "39m", studyTime: "1h 43m", progress: 67, status: "In Progress", recentlyStudied: false },
+          { id: "binary-search", playlistId: "striver-a2z", position: 3, title: "Binary Search", description: "Understand binary search and its variations.", thumbnail: "violet", duration: "1:02:41", topicCount: 12, completedTopicCount: 3, completedDuration: "15m", studyTime: "1h 14m", progress: 24, status: "In Progress", recentlyStudied: true },
+          { id: "sorting-algorithms", playlistId: "striver-a2z", position: 4, title: "Sorting Algorithms", description: "Compare the most important sorting techniques.", thumbnail: "amber", duration: "1:15:20", topicCount: 15, completedTopicCount: 0, completedDuration: "0m", studyTime: "0m", progress: 0, status: "Not Started", recentlyStudied: false },
+          { id: "two-pointer-technique", playlistId: "striver-a2z", position: 5, title: "Two Pointer Technique", description: "Solve problems efficiently with two pointers.", thumbnail: "rose", duration: "44:18", topicCount: 9, completedTopicCount: 0, completedDuration: "0m", studyTime: "0m", progress: 0, status: "Not Started", recentlyStudied: false },
+          { id: "sliding-window", playlistId: "striver-a2z", position: 6, title: "Sliding Window", description: "Learn the sliding window problem-solving pattern.", thumbnail: "cyan", duration: "51:05", topicCount: 11, completedTopicCount: 0, completedDuration: "0m", studyTime: "0m", progress: 0, status: "Not Started", recentlyStudied: false },
+        ],
+      },
+      {
+        id: "data-structures-fundamentals",
+        courseId: "dsa",
+        title: "Data Structures Fundamentals",
+        description: "A practical introduction to essential data structures.",
+        thumbnail: "sky",
+        videoCount: 24,
+        topicCount: 96,
+        progress: 34,
+        contentDuration: "31h 40m",
+        completedDuration: "10h 46m",
+        remainingDuration: "20h 54m",
+        studyTime: "7h 18m",
+        completedTopics: 33,
+        completedVideos: 8,
+        videos: [],
+      },
     ],
     videos: 48,
     topics: 205,
@@ -95,7 +161,7 @@ export const courses: Course[] = [
     name: "Java",
     description: "Core Java and Object-Oriented Programming",
     playlists: [
-      { id: "core-java", title: "Core Java and OOP", videoCount: 36, topicCount: 142, progress: 47, contentDuration: "52h 24m", studyTime: "11h 14m" },
+      { id: "core-java", courseId: "java", title: "Core Java and OOP", description: "Core Java and object-oriented programming.", thumbnail: "sky", videoCount: 36, topicCount: 142, progress: 47, contentDuration: "52h 24m", completedDuration: "24h 37m", remainingDuration: "27h 47m", studyTime: "11h 14m", completedTopics: 67, completedVideos: 17, videos: [] },
     ],
     videos: 36,
     topics: 142,
@@ -109,7 +175,7 @@ export const courses: Course[] = [
     name: "C++",
     description: "C++ fundamentals and STL",
     playlists: [
-      { id: "cpp-fundamentals", title: "C++ Fundamentals and STL", videoCount: 28, topicCount: 117, progress: 31, contentDuration: "38h 16m", studyTime: "7h 42m" },
+      { id: "cpp-fundamentals", courseId: "cpp", title: "C++ Fundamentals and STL", description: "C++ fundamentals and standard library patterns.", thumbnail: "amber", videoCount: 28, topicCount: 117, progress: 31, contentDuration: "38h 16m", completedDuration: "11h 52m", remainingDuration: "26h 24m", studyTime: "7h 42m", completedTopics: 36, completedVideos: 9, videos: [] },
     ],
     videos: 28,
     topics: 117,
@@ -123,8 +189,8 @@ export const courses: Course[] = [
     name: "React",
     description: "React fundamentals and modern frontend development",
     playlists: [
-      { id: "react-fundamentals", title: "React Fundamentals", videoCount: 14, topicCount: 54, progress: 22, contentDuration: "21h 08m", studyTime: "3h 06m" },
-      { id: "modern-react", title: "Modern React Patterns", videoCount: 8, topicCount: 35, progress: 12, contentDuration: "14h 10m", studyTime: "1h 19m" },
+      { id: "react-fundamentals", courseId: "react", title: "React Fundamentals", description: "Build a strong foundation in React.", thumbnail: "violet", videoCount: 14, topicCount: 54, progress: 22, contentDuration: "21h 08m", completedDuration: "4h 39m", remainingDuration: "16h 29m", studyTime: "3h 06m", completedTopics: 12, completedVideos: 3, videos: [] },
+      { id: "modern-react", courseId: "react", title: "Modern React Patterns", description: "Modern patterns for maintainable React applications.", thumbnail: "cyan", videoCount: 8, topicCount: 35, progress: 12, contentDuration: "14h 10m", completedDuration: "1h 41m", remainingDuration: "12h 29m", studyTime: "1h 19m", completedTopics: 4, completedVideos: 1, videos: [] },
     ],
     videos: 22,
     topics: 89,
@@ -138,7 +204,7 @@ export const courses: Course[] = [
     name: "Python",
     description: "Python programming and practical development",
     playlists: [
-      { id: "python-practical", title: "Python Practical Development", videoCount: 31, topicCount: 126, progress: 8, contentDuration: "44h 35m", studyTime: "2h 10m" },
+      { id: "python-practical", courseId: "python", title: "Python Practical Development", description: "Practical Python programming and development.", thumbnail: "yellow", videoCount: 31, topicCount: 126, progress: 8, contentDuration: "44h 35m", completedDuration: "3h 34m", remainingDuration: "41h 01m", studyTime: "2h 10m", completedTopics: 10, completedVideos: 2, videos: [] },
     ],
     videos: 31,
     topics: 126,

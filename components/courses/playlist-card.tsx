@@ -1,4 +1,5 @@
 import { ArrowRight, ListVideo } from "lucide-react";
+import Link from "next/link";
 import type { Playlist } from "@/lib/mock-data";
 
 export function PlaylistCard({ playlist }: { playlist: Playlist }) {
@@ -22,9 +23,9 @@ export function PlaylistCard({ playlist }: { playlist: Playlist }) {
           <span className="text-sm font-medium text-zinc-300">{playlist.progress}%</span>
         </div>
       </div>
-      <button type="button" disabled className="inline-flex h-9 shrink-0 items-center gap-2 rounded-lg border border-white/10 px-3 text-sm text-zinc-500">
+      <Link href={`/courses/${playlist.courseId}/playlists/${playlist.id}`} className="inline-flex h-9 shrink-0 items-center gap-2 rounded-lg border border-white/10 px-3 text-sm text-zinc-300 hover:border-emerald-400/40 hover:text-white">
         Open Playlist <ArrowRight className="size-4" aria-hidden="true" />
-      </button>
+      </Link>
     </article>
   );
 }
