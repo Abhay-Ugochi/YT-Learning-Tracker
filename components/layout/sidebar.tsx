@@ -9,7 +9,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-white/10 bg-zinc-950 md:flex md:flex-col">
+    <aside className="flex w-64 shrink-0 border-r border-white/10 bg-zinc-950 flex-col">
       <div className="flex h-20 items-center border-b border-white/10 px-6">
         <Link href="/dashboard" className="flex items-center gap-3" aria-label="StudyTrack dashboard">
           <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-400 text-zinc-950">

@@ -2,7 +2,9 @@
 
 ## Project purpose
 
-This is a personal responsive web application for tracking learning from YouTube playlists.
+This is a personal desktop-only web application for tracking learning from YouTube playlists.
+
+The application is intentionally desktop-only. Mobile and tablet layouts are not required.
 
 The application will allow the user to:
 
@@ -128,7 +130,7 @@ Automatic YouTube playlist synchronization is not required.
 - Do not modify unrelated files.
 - Do not rewrite the entire application when implementing a small feature.
 - Prefer existing shadcn/ui components where appropriate.
-- Maintain responsive behavior for desktop, tablet, and mobile.
+- Optimize layouts for desktop and laptop browsers.
 - Avoid horizontal overflow.
 - Prefer accessible semantic HTML.
 - Keep components reasonably small and focused.
@@ -153,7 +155,7 @@ Use:
 - Consistent spacing
 - Subtle borders
 - Strong information hierarchy
-- Responsive layouts
+- Desktop-focused layouts
 - Useful visualizations
 - Clear progress indicators
 
